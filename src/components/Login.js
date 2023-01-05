@@ -31,9 +31,9 @@ function Login(props) {
                 showalert("Invalid Credentials","danger");
             }
         })
-        window.onunload=()=>{
-            localStorage.clear();
-        }
+        // window.onunload=()=>{
+        //     localStorage.clear();
+        // }
     
        
   

@@ -29,21 +29,27 @@ function Transactions() {
 
         console.log(json);
         json.then((response) => {
+            // console.log(response.errors[0].msg)
+            console.log(response.success)
             if (response.success) {
                 showalert("Transaction is Successful", "success");
-                
+            }
+            else if(response.success!==true){
+                if(response.message==="Cannot read properties of null (reading 'balance')"){
+                    showalert("Invalid Account Number!","danger");
+                }
+                else{
+                    showalert(`${response.message}`, "danger");
+                }
             }
             else if (!localStorage.getItem("auth-token")) {
                 showalert("Please Login before Transaction", "danger");
             }
-            else {
-                showalert("Invalid account no.", "danger");
-            }
+            
         }).catch(() => {
             showalert("Please Enter a valid Account No.", "danger");
-            
         })
-        settrans(trans.account=" ",trans.account=" ");
+  
         myform.current.reset();
     }
     
